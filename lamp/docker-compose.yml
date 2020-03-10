@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+    db:
+        image: mariadb:10.3
+        restart: always
+        volumes:
+          - ./:/var/lib/mysql
+        environment:
+          - MYSQL_ROOT_PASSWORD=dimension2
+          - MYSQL_PASSWORD=dimension2
+          - MYSQL_DATABASE=testdb
+          - MYSQL_USER=testuser
+
+    php:
+        image: php:7.3-apache
+        restart: always
+        volumes:
+          - ./:/var/www/html
+        ports:
+          - 80:80

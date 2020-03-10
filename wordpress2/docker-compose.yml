@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8880:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress2
+      WORDPRESS_DB_PASSWORD: wordpress2
+      WORDPRESS_DB_NAME: wordpress2
+
+  db:
+    image: mariadb:10.2
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress2
+      MYSQL_USER: wordpress2
+      MYSQL_PASSWORD: wordpress2
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+
